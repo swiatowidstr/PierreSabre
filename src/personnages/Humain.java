@@ -3,13 +3,13 @@ package personnages;
 public class Humain {
 
 	private String nom;
-	private String BoissonFavorite;
-	private int QuantiteArgent;
+	private String boissonFavorite;
+	protected int quantiteArgent;
 
-	public Humain(String nom, String BoissonFavorite, int QUantiteArgent) {
+	public Humain(String nom, String boissonFavorite, int quantiteArgent) {
 		this.nom = nom;
-		this.BoissonFavorite = BoissonFavorite;
-		this.QuantiteArgent = QUantiteArgent;
+		this.boissonFavorite = boissonFavorite;
+		this.quantiteArgent = quantiteArgent;
 	}
 
 	public String getNom() {
@@ -17,49 +17,50 @@ public class Humain {
 	}
 
 	public String getBoissonFavorite() {
-		return BoissonFavorite;
+		return boissonFavorite;
 	}
 
 	public int getQuantiteArgent() {
-		return QuantiteArgent;
+		return quantiteArgent;
 	}
 
-	private void parler(String texte) {
+	protected void parler(String texte) {
 
 		System.out.println("\"" + texte + "\"");
 	}
 
 	public void direBonjour() {
 
-		this.parler("Bonjour ! J m'appelle " + nom + " et j'aime boire du " + BoissonFavorite);
+		this.parler("Bonjour ! J m'appelle " + nom + " et j'aime boire du " + boissonFavorite);
 	}
 
 	public void boire() {
 
-		this.parler("Mmmm, un bon verre de " + BoissonFavorite + "! GLOUPS !");
+		this.parler("Mmmm, un bon verre de " + boissonFavorite + " ! GLOUPS !");
 	}
 
 	public void acheter(String bien, int prix) {
 
-		if (QuantiteArgent >= prix) {
+		if (quantiteArgent >= prix) {
 
-			parler("Jai " + QuantiteArgent + " sous en poche. " + "Je vais m'acheter un/une " + bien + " à " + prix + " sous");
+			parler("Jai " + quantiteArgent + " sous en poche. " + "Je vais m'acheter un/une " + bien + " à " + prix + " sous");
 			perdreArgent(prix);
+
 		} else {
 
-			parler("Je n'ai plus que " + QuantiteArgent + " en poche." + "Je ne peux même pas m'offrir un " + bien + " à " + prix + " sous");
+			parler("Je n'ai plus que " + quantiteArgent + " en poche." + "Je ne peux même pas m'offrir un " + bien + " à " + prix + " sous");
 		}
 	}
 
-	private void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 
-		QuantiteArgent += gain;
+		quantiteArgent += gain;
 	}
 
-	private void perdreArgent(int perte) {
+	protected void perdreArgent(int perte) {
 
-		if (QuantiteArgent >= perte) {
-			QuantiteArgent -= perte;
+		if (quantiteArgent >= perte) {
+			quantiteArgent -= perte;
 		}
 	}
 }
