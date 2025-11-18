@@ -4,7 +4,7 @@ public class Humain {
 
 	private String nom;
 	private String boissonFavorite;
-	protected int quantiteArgent;
+	private int quantiteArgent;
 
 	public Humain(String nom, String boissonFavorite, int quantiteArgent) {
 		this.nom = nom;
@@ -26,7 +26,7 @@ public class Humain {
 
 	protected void parler(String texte) {
 
-		System.out.println("\"" + texte + "\"");
+		System.out.println("(" + getNom() + ") -" + texte);
 	}
 
 	public void direBonjour() {
@@ -43,12 +43,14 @@ public class Humain {
 
 		if (quantiteArgent >= prix) {
 
-			parler("Jai " + quantiteArgent + " sous en poche. " + "Je vais m'acheter un/une " + bien + " à " + prix + " sous");
+			parler("Jai " + quantiteArgent + " sous en poche. " + "Je vais m'acheter un/une " + bien + " à " + prix
+					+ " sous");
 			perdreArgent(prix);
 
 		} else {
 
-			parler("Je n'ai plus que " + quantiteArgent + " en poche." + "Je ne peux même pas m'offrir un " + bien + " à " + prix + " sous");
+			parler("Je n'ai plus que " + quantiteArgent + " en poche." + "Je ne peux même pas m'offrir un " + bien
+					+ " à " + prix + " sous");
 		}
 	}
 
